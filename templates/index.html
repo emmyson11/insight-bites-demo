@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insight Bites | Eat & Drink Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-cream: #f8f4ec;
+        --bg-sand: #ece1cf;
+        --ink: #1f1a16;
+        --ink-muted: #51463d;
+        --accent: #1e6b4a;
+        --accent-deep: #145036;
+        --card: #fffdf9;
+        --line: #dbcdb9;
+        --danger-bg: #fff2ef;
+        --danger-line: #f0b2a9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 15% 10%, rgba(30, 107, 74, 0.16), transparent 36%),
+          radial-gradient(circle at 85% 80%, rgba(160, 95, 36, 0.15), transparent 40%),
+          linear-gradient(160deg, var(--bg-cream), var(--bg-sand));
+        color: var(--ink);
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .shell {
+        max-width: 980px;
+        margin: 28px auto;
+        padding: 18px;
+      }
+
+      .hero {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: color-mix(in oklab, var(--card) 93%, #ffffff 7%);
+        box-shadow: 0 20px 40px rgba(47, 35, 18, 0.08);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.02;
+      }
+
+      .subtitle {
+        margin-top: 10px;
+        color: var(--ink-muted);
+        max-width: 65ch;
+      }
+
+      .panel {
+        margin-top: 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        padding: 18px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .field.wide {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        font-size: 0.88rem;
+        color: var(--ink-muted);
+      }
+
+      textarea,
+      input,
+      select,
+      button {
+        width: 100%;
+        font: inherit;
+        border-radius: 10px;
+      }
+
+      textarea,
+      input,
+      select {
+        border: 1px solid var(--line);
+        background: #fff;
+        padding: 11px 12px;
+        color: var(--ink);
+      }
+
+      textarea {
+        min-height: 96px;
+        resize: vertical;
+      }
+
+      .actions {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        border: 0;
+        padding: 12px 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 140ms ease, background 140ms ease;
+      }
+
+      #go {
+        background: linear-gradient(120deg, var(--accent), var(--accent-deep));
+        color: #fff;
+      }
+
+      #go:hover {
+        transform: translateY(-1px);
+      }
+
+      #go:disabled {
+        opacity: 0.7;
+        transform: none;
+        cursor: default;
+      }
+
+      #reset {
+        background: #f4eee4;
+        color: var(--ink);
+      }
+
+      .card {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 12px;
+        white-space: pre-wrap;
+        line-height: 1.5;
+      }
+
+      .result {
+        border: 1px solid var(--line);
+        background: #fbf8f2;
+        white-space: normal;
+      }
+
+      .result .rec-title {
+        font-family: "Fraunces", serif;
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+      }
+
+      .result p {
+        margin: 0 0 10px;
+      }
+
+      .result ul,
+      .result ol {
+        margin: 0 0 10px 20px;
+        padding: 0;
+      }
+
+      .result li {
+        margin-bottom: 6px;
+      }
+
+      .error {
+        border: 1px solid var(--danger-line);
+        background: var(--danger-bg);
+        white-space: pre-wrap;
+      }
+
+
+      .demo-badge {
+        margin-top: 12px;
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #5a2d00;
+        background: #ffe7c7;
+        border: 1px solid #f0c48a;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+
+      .hint {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: var(--ink-muted);
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          margin: 10px auto;
+          padding: 10px;
+        }
+
+        .hero,
+        .panel {
+          padding: 14px;
+          border-radius: 14px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <h1>Insight Bites</h1>
+        <p class="subtitle">
+          Have you ever been in a new city or at home and just don't know what to eat or drink? Use this app and discover your next favorite spot!
+        </p>
+
+        <section class="panel">
+          <div class="grid">
+            <div class="field wide">
+              <label for="query">What are you in the mood for?</label>
+              <textarea id="query" placeholder="Example: Casual ramen spot with vegetarian options and good late-night vibes."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="location">Location filter</label>
+              <input id="location" placeholder="City, neighborhood, or ZIP" />
+            </div>
+
+            <div class="field">
+              <label for="day">Day</label>
+              <select id="day">
+                <option value="">Any day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="time">Time</label>
+              <input id="time" type="time" />
+            </div>
+
+            <div class="field">
+              <label>&nbsp;</label>
+              <div class="actions">
+                <button id="go">Find Places</button>
+                <button id="reset" type="button">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hint">Tip: Set both day and time to enforce open-hours filtering.</div>
+
+          <div id="result" class="card result" hidden></div>
+          <div id="error" class="card error" hidden></div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const queryEl = document.getElementById("query");
+      const locationEl = document.getElementById("location");
+      const dayEl = document.getElementById("day");
+      const timeEl = document.getElementById("time");
+      const buttonEl = document.getElementById("go");
+      const resetEl = document.getElementById("reset");
+      const resultEl = document.getElementById("result");
+      const errorEl = document.getElementById("error");
+
+      function escapeHtml(value) {
+        return value
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderRecommendation(raw) {
+        const safe = escapeHtml(String(raw || ""));
+        let html = safe;
+
+        html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        html = html.replace(/^###\s+(.+)$/gm, '<div class="rec-title">$1</div>');
+        html = html.replace(/^##\s+(.+)$/gm, '<div class="rec-title">$1</div>');
+        html = html.replace(/^#\s+(.+)$/gm, '<div class="rec-title">$1</div>');
+
+        html = html.replace(/\n\n+/g, "</p><p>");
+        html = "<p>" + html + "</p>";
+
+        html = html.replace(/<p>(\s*\d+\.\s[^<]+(?:<[^>]+>[^<]*)*)<\/p>/g, "<ol><li>$1</li></ol>");
+        html = html.replace(/<li>(\d+)\.\s/g, "<li>");
+
+        html = html
+          .replace(/<p>\s*[-*]\s(.+?)<\/p>/g, "<ul><li>$1</li></ul>")
+          .replace(/<\/ul>\s*<ul>/g, "");
+
+        html = html.replace(/\n/g, "<br>");
+        return html;
+      }
+
+      async function submitQuery() {
+        const query = queryEl.value.trim();
+        if (!query) {
+          errorEl.textContent = "Please enter what you want to eat or drink.";
+          errorEl.hidden = false;
+          resultEl.hidden = true;
+          return;
+        }
+
+        buttonEl.disabled = true;
+        buttonEl.textContent = "Searching...";
+        resultEl.hidden = true;
+        errorEl.hidden = true;
+
+        try {
+          const res = await fetch("/recommend", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              query,
+              location: locationEl.value.trim(),
+              day: dayEl.value,
+              time: timeEl.value,
+            }),
+          });
+
+          const data = await res.json();
+          if (!res.ok || !data.success) {
+            throw new Error(data.error || "Request failed");
+          }
+
+          resultEl.innerHTML = renderRecommendation(data.recommendations);
+          resultEl.hidden = false;
+        } catch (err) {
+          errorEl.textContent = err.message;
+          errorEl.hidden = false;
+        } finally {
+          buttonEl.disabled = false;
+          buttonEl.textContent = "Find Places";
+        }
+      }
+
+      buttonEl.addEventListener("click", submitQuery);
+
+      resetEl.addEventListener("click", () => {
+        queryEl.value = "";
+        locationEl.value = "";
+        dayEl.value = "";
+        timeEl.value = "";
+        resultEl.hidden = true;
+        errorEl.hidden = true;
+      });
+    </script>
+  </body>
+</html>

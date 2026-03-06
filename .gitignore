@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets and env
+.env
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Build/test
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# App data / local artifacts
+chroma_db/
+anaconda_projects/
+*.sqlite3
+data/yelp_*_tabular.csv
+data/yelp_*_for_rag.csv

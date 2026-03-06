@@ -1,0 +1,99 @@
+{
+  "buckets": [
+    {
+      "keywords": ["sushi", "japanese", "ramen"],
+      "title": "Top Japanese Picks",
+      "picks": [
+        {
+          "name": "Kumo Ramen House",
+          "area": "Downtown",
+          "why": "Great broth and late evening seating",
+          "hours": "Mon-Sun 11:30-23:00"
+        },
+        {
+          "name": "Mori Sushi Bar",
+          "area": "Midtown",
+          "why": "Consistent nigiri quality and calm atmosphere",
+          "hours": "Tue-Sun 12:00-22:00"
+        },
+        {
+          "name": "Izakaya Nori",
+          "area": "Arts District",
+          "why": "Strong small-plate menu with good drink pairings",
+          "hours": "Wed-Mon 17:00-00:00"
+        }
+      ]
+    },
+    {
+      "keywords": ["coffee", "cafe", "matcha", "study"],
+      "title": "Top Cafe Picks",
+      "picks": [
+        {
+          "name": "Daylight Roasters",
+          "area": "City Center",
+          "why": "Quiet layout, outlets, and reliable wifi",
+          "hours": "Mon-Fri 07:00-19:00"
+        },
+        {
+          "name": "Matcha Harbor",
+          "area": "Waterfront",
+          "why": "Strong matcha menu and cozy indoor seating",
+          "hours": "Daily 08:00-20:00"
+        },
+        {
+          "name": "Study Bean",
+          "area": "University District",
+          "why": "Large tables and low-noise environment",
+          "hours": "Mon-Sun 06:30-21:30"
+        }
+      ]
+    },
+    {
+      "keywords": ["bar", "cocktail", "night", "drink"],
+      "title": "Top Drink Spots",
+      "picks": [
+        {
+          "name": "Copper Room",
+          "area": "Old Town",
+          "why": "Creative cocktail list and late service",
+          "hours": "Tue-Sat 17:00-01:00"
+        },
+        {
+          "name": "Juniper Public House",
+          "area": "Market District",
+          "why": "Balanced beer list and strong food menu",
+          "hours": "Daily 16:00-00:00"
+        },
+        {
+          "name": "Neon Terrace",
+          "area": "South End",
+          "why": "Lively atmosphere and weekend events",
+          "hours": "Thu-Sun 18:00-02:00"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "title": "Top Eat & Drink Picks",
+    "picks": [
+      {
+        "name": "Union Kitchen",
+        "area": "Downtown",
+        "why": "Flexible menu with vegetarian and hearty options",
+        "hours": "Daily 11:00-22:00"
+      },
+      {
+        "name": "Cedar Street Bistro",
+        "area": "West Side",
+        "why": "Good value and easy group seating",
+        "hours": "Mon-Sun 10:00-21:30"
+      },
+      {
+        "name": "Harbor Table",
+        "area": "Waterfront",
+        "why": "Strong brunch and all-day drink menu",
+        "hours": "Daily 09:00-23:00"
+      }
+    ]
+  }
+}
