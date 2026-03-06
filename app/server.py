@@ -16,11 +16,17 @@ DEMO_MODE = is_truthy(os.getenv("DEMO_MODE", "false"))
 rag = None
 
 if not DEMO_MODE:
-    from app.config import get_settings
-    from app.rag import PlaceRAG
+    try:
+        from app.config import get_settings
+        from app.rag import PlaceRAG
 
-    settings = get_settings()
-    rag = PlaceRAG(settings)
+        settings = get_settings()
+        rag = PlaceRAG(settings)
+    except Exception:
+        # Safe startup fallback for public demos/deploys without API config.
+        DEMO_MODE = True
+
+print(f"Startup mode: {'DEMO' if DEMO_MODE else 'LIVE'}")
 
 
 @app.get("/")
