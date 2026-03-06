@@ -14,7 +14,7 @@ A simple prototype of Insight Bites that use a Retrieval-Augmented Generation (R
 ## Project structure
 
 ```
-starter_app/
+insight-bites-demo/
   app/
     config.py
     rag.py
