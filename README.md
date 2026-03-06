@@ -8,7 +8,7 @@ A beginner-friendly starter template for a Retrieval-Augmented Generation (RAG) 
 - LangChain + Chroma vector search
 - OpenAI embeddings and chat model
 - Simple web UI in plain HTML/CSS/JS
-- Script to build/persist your vector database
+- Script to build your vector database
 - Small sample dataset so you can run quickly
 
 ## Project structure
@@ -32,13 +32,11 @@ starter_app/
 ## 1) Setup
 
 ```bash
-cd /Users/emmyson/Insight-Coffee/starter_app
+cd path_to_repo
 /opt/homebrew/bin/python3.11 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-
-If `python3` points to Anaconda/Python 3.13, keep using `python3.11` for this starter to avoid source-build issues with compiled dependencies.
 
 ## 2) Configure API key
 
