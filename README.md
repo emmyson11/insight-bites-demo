@@ -1,6 +1,8 @@
 # Insight Bites Starter App
 
-A simple prototype of Insight Bites that use a Retrieval-Augmented Generation (RAG) for a eat-and-drink recommendation app.
+A simple prototype of Insight Bites that use a Retrieval-Augmented Generation (RAG) for a eat-and-drink recommendation app
+
+Try out the demo version here: https://insight-bites-demo.onrender.com/
 
 ## What this repo includes
 
